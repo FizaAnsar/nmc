@@ -1,0 +1,298 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="backpressbtn">
+        <a [routerLink]="[
+            '/fuel', { outlets: { metroCity: ['settings'] }
+            }]">
+          <i class="fa-solid fa-circle-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="innerContainer">
+      <div class="fw-bold fs-4 headingColor">USER SETTING</div>
+      <div class="fw-bold text-secondary fs-5 w-100">
+        <hr />
+
+        <div class="row">
+            <div class="name d-flex justify-content-between">
+                <label for="name" class="fw-bold fs-5 text-dark">Name</label>
+                <div>
+                    <button class="editbtn" data-bs-toggle="modal"
+                    data-bs-target="#editNameModal">Edit</button>
+                </div>
+            </div>
+
+            <hr>
+            <div class="Username d-flex justify-content-between">
+                <label for="Username" class="fw-bold fs-5 text-dark">Username</label>
+                <div>
+                    <button class="editbtn" data-bs-toggle="modal"
+                    data-bs-target="#editUsernameModal">Edit</button>
+                </div>
+            </div>
+            <hr>
+            <div class="changePassword d-flex justify-content-between">
+                <label for="changePassword" class="fw-bold fs-5 text-dark">Change Password</label>
+                <div>
+                    <button class="editbtn" data-bs-toggle="modal"
+                    data-bs-target="#editPasswordModal">Edit</button>
+                </div>
+            </div>
+            <hr>
+            <div class="updateProfile d-flex justify-content-between">
+                <label for="updateProfile" class="fw-bold fs-5 text-dark">Update Profile</label>
+                <div>
+                    <button class="editbtn" data-bs-toggle="modal"
+                    data-bs-target="#updateProfileModal">Edit</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Edit Name Module -->
+   <div
+   class="modal fade"
+   id="editNameModal"
+   tabindex="-1"
+   aria-labelledby="exampleModalLabel"
+   aria-hidden="true"
+ >
+   <div class="modal-dialog modal-dialog-centered">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5
+           class="modal-title fw-bold"
+           id="exampleModalLabel"
+           style="color: rgb(156, 28, 92)"
+         >
+           EDIT NAME
+         </h5>
+         <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+         ></button>
+       </div>
+       <div class="modal-body">
+         <div class="nameContainer">
+
+           <!-- Name -->
+           <div class="my-4 d-flex justify-content-center">
+             <div class="modelHeadingDiv text-start mx-2">Name</div>
+             <div class="modalValueDiv text-center mx-2">
+               <input type="text" class="w-100 inputs" />
+             </div>
+           </div>
+
+         </div>
+       </div>
+       <div class="modal-footer d-flex justify-content-center">
+         <button
+           type="button"
+           class="btn text-white w-25"
+           style="background-color: rgb(156, 28, 92)"
+         >
+           Save
+         </button>
+         <button
+           type="button"
+           class="btn text-white w-25"
+           data-bs-dismiss="modal"
+           style="background-color: rgb(156, 28, 92)"
+         >
+           Cancel
+         </button>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <!-- Edit Username Module -->
+ <div
+ class="modal fade"
+ id="editUsernameModal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog modal-dialog-centered">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5
+         class="modal-title fw-bold"
+         id="exampleModalLabel"
+         style="color: rgb(156, 28, 92)"
+       >
+         EDIT USERNAME
+       </h5>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+     </div>
+     <div class="modal-body">
+       <div class="usernameContainer">
+
+         <!-- User Name -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">Username</div>
+           <div class="modalValueDiv text-center mx-2">
+             <input type="text" class="w-100 inputs" />
+           </div>
+         </div>
+
+       </div>
+     </div>
+     <div class="modal-footer d-flex justify-content-center">
+       <button
+         type="button"
+         class="btn text-white w-25"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Save
+       </button>
+       <button
+         type="button"
+         class="btn text-white w-25"
+         data-bs-dismiss="modal"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Cancel
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+
+ <!-- Edit Password Module -->
+ <div
+ class="modal fade"
+ id="editPasswordModal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog modal-dialog-centered">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5
+         class="modal-title fw-bold"
+         id="exampleModalLabel"
+         style="color: rgb(156, 28, 92)"
+       >
+         CHANGE PASSWORD
+       </h5>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+     </div>
+     <div class="modal-body">
+       <div class="changePasswordContainer">
+         <!-- Current Password -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">Current Password</div>
+           <div class="modalValueDiv text-center mx-2">
+             <input type="text" class="w-100 inputs" />
+           </div>
+         </div>
+         <!-- New Password -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">New Password</div>
+           <div class="modalValueDiv text-center mx-2">
+             <input type="text" class="w-100 inputs" />
+           </div>
+         </div>
+         <!-- Confirm Password -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">Confirm Password</div>
+           <div class="modalValueDiv text-center mx-2">
+             <input type="text" class="w-100 inputs" />
+           </div>
+         </div>
+        
+
+       </div>
+     </div>
+     <div class="modal-footer d-flex justify-content-center">
+       <button
+         type="button"
+         class="btn text-white w-25"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Update
+       </button>
+       <button
+         type="button"
+         class="btn text-white w-25"
+         data-bs-dismiss="modal"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Cancel
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+
+ <!-- Update Profile Module -->
+ <div
+ class="modal fade"
+ id="updateProfileModal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog modal-dialog-centered">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5
+         class="modal-title fw-bold"
+         id="exampleModalLabel"
+         style="color: rgb(156, 28, 92)"
+       >
+         UPDATE PROFILE
+       </h5>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+     </div>
+     <div class="modal-body">
+       <div class="updateProfileContainer">
+       
+
+       </div>
+     </div>
+     <div class="modal-footer d-flex justify-content-center">
+       <button
+         type="button"
+         class="btn text-white w-25"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Save
+       </button>
+       <button
+         type="button"
+         class="btn text-white w-25"
+         data-bs-dismiss="modal"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Cancel
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
+</div>

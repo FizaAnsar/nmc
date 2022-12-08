@@ -1,0 +1,138 @@
+<div class="body">
+  <div class="mainContainer">
+    <!-- box container -->
+    <div class="boxContainer row">
+      <!-- Todat Issuance -->
+      <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+        <div class="aquaBox">
+          <div class="row align-items-center h-100">
+            <p class="text-white fs-5 text-center">Today Issuance</p>
+            <div class="text-white fs-4 fw-bold d-flex justify-content-center">
+              <p>{{ 86.3 }}</p>
+              <p>L</p>
+            </div>
+
+            <div class="d-flex justify-content-end text-white fs-6">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consumption -->
+      <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+        <div class="pinkBox">
+          <div class="row align-items-center h-100">
+            <p class="text-white fs-5 text-center">Consumption</p>
+            <div class="text-white fs-4 fw-bold d-flex justify-content-center">
+              <p>{{ 5342 }}</p>
+              <p>L</p>
+            </div>
+
+            <div class="d-flex justify-content-end text-white fs-6">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Purchase -->
+      <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+        <div class="greenBox">
+          <div class="row align-items-center h-100">
+            <p class="text-white fs-5 text-center">Purchase</p>
+            <div class="text-white fs-4 fw-bold d-flex justify-content-center">
+              <p>{{ 100 }}</p>
+              <p>L</p>
+            </div>
+
+            <div class="d-flex justify-content-end text-white fs-6">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Stock -->
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="voiletBox">
+          <div class="d-flex justify-content-between mt-1 mx-4">
+            <p class="text-white fs-5">Current Stock</p>
+            <div class="text-white fs-4 fw-bold d-flex justify-content-center">
+              <p>{{ 300 }}</p>
+              <p>L</p>
+            </div>
+          </div>
+
+          <!-- progrssive bar -->
+          <div>
+            <div class="petrolProgrssiveBar">
+              <div class="progress" style="height: 30px; width: 80%; margin-bottom: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 25%; background-color: rgb(190, 190, 190);" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="text-white fs-5 fw-bold d-flex">
+                <div class="mx-2">{{200}}L</div>
+                <div class="mx-2">P</div>
+              </div>
+            </div>
+            <div class="dieselProgrssiveBar">
+              <div class="progress" style="height: 30px; width: 80%; margin-bottom: 5px;">
+                <div class="progress-bar" role="progressbar" style="width: 18%; background-color: rgb(190, 190, 190)" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="text-white fs-5 fw-bold d-flex ">
+                <div class="mx-2">{{300}}L</div>
+                <div class="mx-2">D</div>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end text-white fs-6">
+            <i class="fa-solid fa-angles-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bar chart for petrol and diesel -->
+    <div class="chartContainer row">
+      <!-- Petrol Bar Chart -->
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="petrolChartContainer">
+          <div class="nameDiv fs-5 fw-bold text-center">CONSUMPTION</div>
+          <div class="outerDiv px-5 py-2">
+            <div class="chart">
+              <canvas id="barchart_Consumption"></canvas>
+              <!-- <canvas  baseChart
+              [data]="barChartData"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [type]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas> -->
+            </div>
+            <div class="btnDiv text-center">
+              <button class="btnofChart" (click)="timeFrame('day')">Daily</button>
+              <button class="btnofChart" (click)="timeFrame('month')">Monthly</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Diesel Bar Chart -->
+      <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="dieselChartContainer">
+          <div class="nameDiv fs-5 fw-bold text-center">PURCHASE</div>
+          <div class="outerDiv px-5 py-2">
+            <div class="chart">
+              <canvas id="barchart_Purchase"></canvas>
+            </div>
+            <div class="btnDiv text-center">
+              <button class="btnofChart">Daily</button>
+              <button class="btnofChart">Monthly</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

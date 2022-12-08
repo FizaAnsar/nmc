@@ -1,0 +1,178 @@
+<div class="body">
+    <div class="backpress">
+        <div class="backpressbtn">
+            <a [routerLink]="['/fuel',{
+          outlets:{'metroCity':['reports']}
+        }]">
+                <i class="fa-solid fa-circle-arrow-left"></i>
+            </a>
+        </div>
+    </div>
+    <div class="outerContainer">
+        <div class="mainDiv d-flex justify-content-between">
+            <div class="date">
+                <form class="row row-cols-sm-auto">
+                    <div class="col-6">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                [displayMonths]="fromdisplayMonths" [navigation]="fromnavigation"
+                                [outsideDays]="fromoutsideDays" [showWeekNumbers]="fromshowWeekNumbers" ngbDatepicker
+                                #from="ngbDatepicker" />
+                            <button class="btn btn-outline-secondary " (click)="from.toggle()" type="button">
+                                <i class="fa-regular fa-calendar-days"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="yyyy-mm-dd" name="dp"
+                                [displayMonths]="todisplayMonths" [navigation]="tonavigation"
+                                [outsideDays]="tooutsideDays" [showWeekNumbers]="toshowWeekNumbers" ngbDatepicker
+                                #to="ngbDatepicker" />
+                            <button class="btn btn-outline-secondary " (click)="to.toggle()" type="button">
+                                <i class="fa-regular fa-calendar-days"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="addUserBtn generate me-2">
+                        Generate
+                    </button>
+                </form>
+            </div>
+            <div class="d-flex justify-content-end newPurchaseBtndiv">
+                <button class="addUserBtn pdf me-2" (click)="generatePdfFile()">
+                    Pdf
+                </button>
+
+                <button class="addUserBtn excel me-2" (click)="exportexcel()">
+                    Excel
+                </button>
+                <!-- <button class="addUserBtn print" [print]="['dailyReports', config]">
+                    Print
+                </button> -->
+            </div>
+        </div>
+        <div class="tableContainer" >
+            <!-- #report -->
+            <table class="table table-striped text-center " id="dailyReports">
+                <thead>
+                    <tr class="tableHeadings">
+                        <th scope="col-4">#</th>
+                        <th scope="col-4">REPORT TYPE</th>
+                        <th scope="col-4">REPORT NAME</th>
+                        <th scope="col-2">DESCRIPTION</th>
+                        <th scope="col-2">DATE CREATED</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2022</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2022</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2021</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2020</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2019</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2018</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2017</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2016</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2015</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2014</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2013</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2012</td>
+                        
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Daily </td>
+                        <td>Daily Sales Report</td>
+                        <td>Reports</td>
+                        <td>12-11-2011</td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

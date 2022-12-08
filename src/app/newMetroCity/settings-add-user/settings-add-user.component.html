@@ -1,0 +1,429 @@
+<div class="body">
+  <div class="backpress">
+    <div class="backpressbtn">
+      <a
+        [routerLink]="[
+          '/fuel',
+          {
+            outlets: { metroCity: ['settings'] }
+          }
+        ]"
+      >
+        <i class="fa-solid fa-circle-arrow-left"></i>
+      </a>
+    </div>
+  </div>
+  <div class="outerContainer">
+    <div class="d-flex justify-content-end newPurchaseBtndiv">
+      <button
+        class="addUserBtn"
+        data-bs-toggle="modal"
+        data-bs-target="#UserModal"
+      >
+        Add User
+      </button>
+    </div>
+    <div class="tableContainer">
+      <table class="table table-striped text-center">
+        <thead>
+          <tr class="tableHeadings">
+            <th scope="col-4">USER NAME</th>
+            <th scope="col-4">ROLE</th>
+            <th scope="col-2">ACTION</th>
+            <th scope="col-2">PASSWORD</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let user of allUsers; let j = index">
+            <th>{{ user.userName }}</th>
+            <td>{{ user.userRole }}</td>
+            <td>
+              <div>
+                <button
+                  class="mx-2 editbuttons"
+                  data-bs-toggle="modal"
+                  data-bs-target="#UserModal"
+                  (click)="editItem(user, j)"
+                >
+                  Edit
+                </button>
+                <button class="mx-2 editbuttons" (click)="logout()">
+                  Logout
+                </button>
+              </div>
+            </td>
+            <td>
+              <div>
+                <button
+                  class="mx-2 editbuttons"
+                  data-bs-toggle="modal"
+                  data-bs-target="#changePasswordModal"
+                >
+                  Change
+                </button>
+                <button
+                  class="mx-2 editbuttons"
+                  data-bs-toggle="modal"
+                  data-bs-target="#resetPasswordModal"
+                >
+                  Reset
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div
+    class="modal fade"
+    id="UserModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            ADD USERS
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form
+          #UserAdd="ngForm"
+          (ngSubmit)="onSubmitUser()"
+          [formGroup]="addUser"
+        >
+          <div class="modal-body">
+            <div class="addUserContainer">
+              <!-- Role -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Role</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      formControlName="userRole"
+                      [(ngModel)]="userModel.userRole"
+                      [class.error]="
+                        addUser.controls['userRole'].dirty &&
+                        addUser.hasError('required', 'userRole')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addUser.controls['userRole'].dirty &&
+                      addUser.hasError('required', 'userRole')
+                    "
+                    class="text-danger"
+                    >Role is Required</small
+                  >
+                </div>
+              </div>
+              <!-- First Name -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">First Name</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="firstName"
+                    [(ngModel)]="userModel.firstName"
+                    [class.error]="
+                      addUser.controls['firstName'].dirty &&
+                      addUser.hasError('required', 'firstName')
+                    "/>
+                  </div>
+                  <small
+                  *ngIf="
+                    addUser.controls['firstName'].dirty &&
+                    addUser.hasError('required', 'firstName')
+                  "
+                  class="text-danger"
+                  >First Name is Required</small
+                >
+                </div>
+              </div>
+              <!-- Second Name -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Second Name</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" 
+                    formControlName="lastName"
+                        [(ngModel)]="userModel.lastName"
+                        [class.error]="
+                          addUser.controls['lastName'].dirty &&
+                          addUser.hasError('required', 'lastName')
+                        "/>
+                  </div>
+                  <small
+                    *ngIf="
+                      addUser.controls['lastName'].dirty &&
+                      addUser.hasError('required', 'lastName')
+                    "
+                    class="text-danger"
+                    >Last Name is Required</small
+                  >
+                </div>
+              </div>
+              <!-- User Name -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">User Name</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" 
+                    formControlName="userName"
+                        [(ngModel)]="userModel.userName"
+                        [class.error]="
+                          addUser.controls['userName'].dirty &&
+                          addUser.hasError('required', 'userName')
+                        "/>
+                  </div>
+                  <small
+                  *ngIf="
+                    addUser.controls['userName'].dirty &&
+                    addUser.hasError('required', 'userName')
+                  "
+                  class="text-danger"
+                  >User Name is Required</small
+                >
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Password</div>
+                <div class="withValidation">
+                <div class="modalValueDiv text-center mx-2">
+                  <input type="text" class="w-100 inputs" 
+                  formControlName="userPassword"
+                        [(ngModel)]="userModel.userPassword"
+                        [class.error]="
+                          addUser.controls['userPassword'].dirty &&
+                          addUser.hasError('required', 'userPassword')
+                        "/>
+                </div>
+                <small
+                *ngIf="
+                  addUser.controls['userPassword'].dirty &&
+                  addUser.hasError('required', 'userPassword')
+                "
+                class="text-danger"
+                >Password is Required</small
+              >
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Add
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit User Modal -->
+  <div
+    class="modal fade"
+    id="editUserModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            EDIT USERS
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="addUserContainer">
+            <!-- Role -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">Role</div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+            <!-- First Name -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">First Name</div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+            <!-- Second Name -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">Second Name</div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+            <!-- User Name -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">User Name</div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn text-white w-25"
+            style="background-color: rgb(156, 28, 92)"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="btn text-white w-25"
+            data-bs-dismiss="modal"
+            style="background-color: rgb(156, 28, 92)"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change password Modal -->
+  <div
+    class="modal fade"
+    id="changePasswordModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            CHANGE PASSWORD
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="addUserContainer">
+            <!-- Old Password -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">Old Password</div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">Password</div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="my-4 d-flex justify-content-center">
+              <div class="modelHeadingDiv text-start mx-2">
+                Confirm Password
+              </div>
+              <div class="modalValueDiv text-center mx-2">
+                <input type="text" class="w-100 inputs" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn text-white w-25"
+            style="background-color: rgb(156, 28, 92)"
+          >
+            Change
+          </button>
+          <button
+            type="button"
+            class="btn text-white w-25"
+            data-bs-dismiss="modal"
+            style="background-color: rgb(156, 28, 92)"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Password Modal -->
+  <div
+    class="modal fade"
+    id="resetPasswordModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="text-success text-center fw-bold fs-1">
+            <i class="fa-regular fa-circle-check"></i>
+          </div>
+          <div class="text-dark text-center fw-bold fs-3">Password Reset!</div>
+          <div>
+            <p class="text-dark text-center fs-5">Your new password is:</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

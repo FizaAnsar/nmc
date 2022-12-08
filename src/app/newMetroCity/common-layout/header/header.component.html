@@ -1,0 +1,122 @@
+<nav class="navbar navbar-expand-lg text-center">
+   
+      <a class="navbar-brand logo" [routerLink]="['/fuel',{
+        outlets:{'metroCity':['dashboard']}
+      }]">
+        <img src="../../../../assets/img/logo_NMC_white.png" class="logoImage" alt="">
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="navbarCollapsed = !navbarCollapsed"
+        [attr.aria-expanded]="!navbarCollapsed"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse onCollapse"
+        [ngbCollapse]="navbarCollapsed"
+        id="navbarSupportedContent"
+      >
+        <ul
+        id="leftListOnCollapse"
+          class="navbar-nav me-auto mb-2 mb-lg-0 justify-content-center align-item-center "
+        >
+        
+      </ul>
+      <ul id="rightListOnCollapse" class="navbar-nav navbar-right">
+        <!-- searchbar -->
+          <li class="nav-item">
+            <div class="searchDiv text-center">
+              <input type="search" placeholder="Search" id="searchbar" />
+              <button type="submit" id="searchbtn">
+                <i class="fa fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </li>
+
+          <!-- notification dropdown -->
+          <li ngbDropdown class="nav-item dropdown">
+            <a
+              ngbDropdownToggle
+              class="nav-link"
+              href="#"
+              data-bs-toggle="dropdown"
+            >
+              <i class="bellIcon fa fa-bell"></i>
+            </a>
+          </li>
+
+          <!-- profile setting dropdown -->
+          <li ngbDropdown class="nav-item dropdown align-items-center pe-3">
+            <a
+              class="nav-link profileName"
+              href="#"
+              data-bs-toggle="dropdown"
+              ngbDropdownToggle
+            >
+              admin@nmc.com
+            </a>
+            <ul ngbDropdownMenu class="dropdown-menu profile">
+              
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  class="dropdown-item d-flex align-items-center"
+                  routerLink="/user-profile"
+                >
+                  <i class="fa fa-person me-3"></i> <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  class="dropdown-item d-flex align-items-center"
+                  routerLink="/user-profile"
+                >
+                  <i class="fa fa-gear me-2"></i> <span>Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  class="dropdown-item d-flex align-items-center"
+                  routerLink="/pages-faq"
+                >
+                  <i class="fa fa-question-circle me-2"></i>
+                  <span>Need Help?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a
+                  ngbDropdownItem
+                  class="dropdown-item d-flex align-items-center"
+                  routerLink="/login"
+                  (click)="logout()"
+                >
+                  <i class="fa fa-arrow-right-from-bracket me-2"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+   
+  </nav>
+

@@ -1,0 +1,453 @@
+<div class="body">
+  <div class="backpress">
+    <!-- <div class="backpressbtn">
+      <a [routerLink]="['/fuel',{
+          outlets:{'metroCity':['inventory']}
+        }]">
+        <i class="fa-solid fa-circle-arrow-left"></i>
+      </a>
+    </div> -->
+  </div>
+  <div class="outerContainer">
+    <div class="d-flex justify-content-between">
+      <!-- Add Department Button -->
+      <div class="addDepartmentBtndiv">
+        <button
+          class="addDepartmentBtn"
+          data-bs-toggle="modal"
+          data-bs-target="#addDepartmentModal"
+        >
+          Add Department
+        </button>
+      </div>
+
+      <!-- Add Vehicle Button -->
+      <div class="addVehicleBtndiv">
+        <button
+          class="addVehicleBtn"
+          data-bs-toggle="modal"
+          data-bs-target="#VehicleModal"
+          
+        >
+          Add Vehicle
+        </button>
+      </div>
+    </div>
+    <div class="tableContainer">
+      <table class="table table-striped text-center">
+        <thead>
+          <tr class="tableHeadings">
+            <th scope="col-4">Vehicle #</th>
+            <th scope="col-2">Vehicle Make</th>
+            <th scope="col-2">Vehicle Model</th>
+            <th scope="col-2">Driver Name</th>
+            <th scope="col-2">Department</th>
+            <th scope="col-2">Monthly Allowed Fuel</th>
+            <th scope="col-2">Fuel Type</th>
+            <th scope="col-2">Action</th>
+          </tr>
+        </thead>
+        <tbody class="">
+          <tr *ngFor="let vh of AllVehicles;  let j=index" >
+            
+            <td>{{ vh.vehicleNumber }}</td>
+            <td>{{ vh.vehicleMake }}</td>
+            <td>{{ vh.vehicleModel }}</td>
+            <td>{{ vh.driverId }}</td>
+            <td>{{ vh.departmentId }}</td>
+            <td>{{ vh.allowedFuel }}</td>
+            <td>{{ vh.fuelType }}</td>
+
+            <td>
+              <div ngbDropdown class="d-inline-block">
+                <button
+                  type="button"
+                  class="btn"
+                  id="dropdownBasic1"
+                  ngbDropdownToggle
+                >
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button
+                    data-bs-toggle="modal"
+                    data-bs-target="#VehicleModal"
+                    ngbDropdownItem
+                    (click)="editItem(vh, j)"
+                  >
+                    Edit
+                  </button>
+                  <button data-bs-toggle="modal"
+                   data-bs-target="" 
+                   ngbDropdownItem 
+                   (click)="removeItem(vh.id)">Delete</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add Vehicle Modal -->
+  <div
+    class="modal fade"
+    id="VehicleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            ADD Vehicle
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form
+          #vehicleAdd="ngForm"
+          (ngSubmit)="onSubmitVehicle()"
+          [formGroup]="addVehicle"
+        >
+          <div class="modal-body">
+            <!-- {{vehicleAdd.value | json}}
+              <hr/>
+              {{vehicleModel |json }} -->
+            <div class="addVehicleContainer">
+              <!-- Vehicle # -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Vehicle #</div>
+                <div class="withvalidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      required
+                      class="w-100 inputs form-control"
+                      [(ngModel)]="vehicleModel.vehicleNumber"
+                      formControlName="vehicleNumber"
+                      [class.error]="
+                        addVehicle.controls['vehicleNumber'].dirty &&
+                        addVehicle.hasError('required', 'vehicleNumber')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['vehicleNumber'].dirty &&
+                      addVehicle.hasError('required', 'vehicleNumber')
+                    "
+                    class="text-danger"
+                    >Vehicle Number is Required</small
+                  >
+                  <small
+                    *ngIf="
+                      addVehicle.controls['vehicleNumber'].dirty &&
+                      addVehicle.hasError('pattern', 'vehicleNumber')
+                    "
+                    class="text-danger"
+                    >Must enter ABC-1234 format</small
+                  >
+                </div>
+              </div>
+
+              <!-- Vehicle Make -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Vehicle Make</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      name="vehicleMake"
+                      [(ngModel)]="vehicleModel.vehicleMake"
+                      formControlName="vehicleMake"
+                      [class.error]="
+                        addVehicle.controls['vehicleMake'].dirty &&
+                        addVehicle.hasError('required', 'vehicleMake')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['vehicleMake'].dirty &&
+                      addVehicle.hasError('required', 'vehicleMake')
+                    "
+                    class="text-danger"
+                    >Vehicle Make is Required</small
+                  >
+                </div>
+              </div>
+
+              <!-- Vehicle Model -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Vehicle Model</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      name="vehicleModel"
+                      [(ngModel)]="vehicleModel.vehicleModel"
+                      formControlName="vehicleModel"
+                      [class.error]="
+                        addVehicle.controls['vehicleModel'].dirty &&
+                        addVehicle.hasError('required', 'vehicleModel')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['vehicleModel'].dirty &&
+                      addVehicle.hasError('required', 'vehicleModel')
+                    "
+                    class="text-danger"
+                    >Vehicle Make is Required</small
+                  >
+                </div>
+              </div>
+
+              <!-- Allowed Fuel -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">
+                  Monthly Allowed Fuel
+                </div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      name="allowedFuel"
+                      [(ngModel)]="vehicleModel.allowedFuel"
+                      formControlName="allowedFuel"
+                      [class.error]="
+                        addVehicle.controls['allowedFuel'].dirty &&
+                        addVehicle.hasError('required', 'allowedFuel')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['allowedFuel'].dirty &&
+                      addVehicle.hasError('required', 'allowedFuel')
+                    "
+                    class="text-danger"
+                  >
+                    Allowed Fuel is Required</small
+                  >
+                </div>
+              </div>
+              <!-- Fuel Type -->
+
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Fuel Type</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      name="fuelType"
+                      [(ngModel)]="vehicleModel.fuelType"
+                      formControlName="fuelType"
+                      [class.error]="
+                        addVehicle.controls['fuelType'].dirty &&
+                        addVehicle.hasError('required', 'fuelType')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['fuelType'].dirty &&
+                      addVehicle.hasError('required', 'fuelType')
+                    "
+                    class="text-danger"
+                    >Fuel Type is Required</small
+                  >
+                </div>
+              </div>
+              <!-- Driver Name -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Driver Name</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      name="driverId"
+                      [(ngModel)]="vehicleModel.driverId"
+                      formControlName="driverId"
+                      [class.error]="
+                        addVehicle.controls['driverId'].dirty &&
+                        addVehicle.hasError('required', 'driverId')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['driverId'].dirty &&
+                      addVehicle.hasError('required', 'driverId')
+                    "
+                    class="text-danger"
+                    >Driver Name is Required</small
+                  >
+                </div>
+              </div>
+
+              <!-- Department -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Department</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <select
+                      class="w-100 inputs"
+                      name="deptartmentId"
+                      [(ngModel)]="vehicleModel.departmentId"
+                      formControlName="departmentId"
+                      [class.error]="
+                        addVehicle.controls['departmentId'].dirty &&
+                        addVehicle.hasError('required', 'departmentId')
+                      "
+                    >
+                      <option selected>Select Department</option>
+                      <option
+                        value="{{ dept.departmentName }}"
+                        *ngFor="let dept of AllDepartments"
+                      >
+                        {{ dept.departmentName }}
+                      </option>
+                    </select>
+                  </div>
+                  <small
+                    *ngIf="
+                      addVehicle.controls['departmentId'].dirty &&
+                      addVehicle.hasError('required', 'departmentId')
+                    "
+                    class="text-danger"
+                    >Department Name is Required</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+              id="addBtn"
+             
+            >
+              <!-- (click)="PostVehicles(vehicleNumber)" -->
+              Save
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Department Modal -->
+  <div
+    class="modal fade"
+    id="addDepartmentModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            ADD DEPARTMENT
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form
+          #departmentAdd="ngForm"
+          (ngSubmit)="onSubmitDepartment()"
+          [formGroup]="addDepartment"
+        >
+          {{ departmentAdd.value | json }}
+          <div class="modal-body">
+            <div class="addDepartmentContainer">
+              <!-- Department -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">
+                  DEPARTMENT NAME
+                </div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      [(ngModel)]="departmentModel.departmentName"
+                      formControlName="departmentName"
+                      [class.error]="
+                        addDepartment.controls['departmentName'].dirty &&
+                        addDepartment.hasError('required', 'departmentName')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                      addDepartment.controls['departmentName'].dirty &&
+                      addDepartment.hasError('required', 'departmentName')
+                    "
+                    class="text-danger"
+                    >Department name is Required</small
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Add
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+

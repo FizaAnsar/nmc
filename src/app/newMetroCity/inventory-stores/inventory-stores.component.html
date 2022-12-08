@@ -1,0 +1,166 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="backpressbtn">
+        <a [routerLink]="[
+              '/fuel',
+              {
+                outlets: { metroCity: ['inventory'] }
+              }
+            ]">
+          <i class="fa-solid fa-circle-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="innerContainer">
+      <div class="d-flex justify-content-between">
+        <div class="fw-bold fs-4 headingColor">STORES</div>
+        <div>
+          <button class="addStorebtn" data-bs-toggle="modal" data-bs-target="#StoreModal">Add Store</button>
+        </div>
+      </div>
+      <div class="fw-bold text-secondary fs-5 w-100">
+        <hr />
+      </div>
+
+      <div class="StoreContainer">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr class="TableheadingDiv">
+              <th scope="col">NAME</th>
+              <th scope="col">INCHARGE</th>
+              <th scope="col">CONTACT NO</th>
+              <th scope="col">TOTAL STOCK</th>
+              <th scope="col">ADDRESS</th>
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let s of allStores;  let j=index">
+              <th>{{s.storeName}}</th>
+              <td>{{s.inchargeName}}</td>
+              <td>{{s.contactNumber}}</td>
+              <td>{{s.stockCapacity}} L</td>
+              <td>{{s.storeAddress}}</td>
+              <td>
+                <div>
+                  <!-- <button class="editbtn mx-2" data-bs-toggle="modal"
+                    data-bs-target="#editStoreModal">Edit</button>
+                    <button class="deletebtn mx-2">Delete</button> -->
+                  <div ngbDropdown class="d-inline-block">
+                    <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                      <button data-bs-toggle="modal" data-bs-target="#StoreModal" ngbDropdownItem (click)="editItem(s, j)">Edit</button>
+                      <button data-bs-toggle="modal" data-bs-target="#refuelModal" ngbDropdownItem (click)="removeItem(s.id)">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Store Module -->
+  <div class="modal fade" id="StoreModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="exampleModalLabel" style="color: rgb(156, 28, 92)">
+            ADD STORE
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form #storesAdd="ngForm" (ngSubmit)="onSubmit()" [formGroup]="addStorefg">
+          <!-- {{storesAdd.value|json}} -->
+          <div class="modal-body">
+            <div class="addUserContainer">
+              <!-- Store Name -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Store Name</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="storeName"
+                      [(ngModel)]="storeModel.storeName"
+                      [class.error]="addStorefg.controls['storeName'].dirty && addStorefg.hasError('required','storeName')" />
+                  </div>
+                  <small *ngIf="addStorefg.controls['storeName'].dirty && addStorefg.hasError('required','storeName')"
+                    class="text-danger">Store Name is Required</small>
+                </div>
+              </div>
+              <!-- Incharge -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Incharge</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="inchargeName"
+                      [(ngModel)]="storeModel.inchargeName"
+                      [class.error]="addStorefg.controls['inchargeName'].dirty && addStorefg.hasError('required','inchargeName')" />
+                  </div>
+                  <small *ngIf="addStorefg.controls['inchargeName'].dirty && addStorefg.hasError('required','inchargeName')"
+                    class="text-danger">Incharge Name is Required</small>
+                </div>
+              </div>
+              <!-- Contact No -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Contact No</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="contactNumber"
+                      [(ngModel)]="storeModel.contactNumber"
+                      [class.error]="addStorefg.controls['contactNumber'].dirty && addStorefg.hasError('required','contactNumber')" />
+                  </div>
+                  <small *ngIf="addStorefg.controls['contactNumber'].dirty && addStorefg.hasError('required','contactNumber')"
+                    class="text-danger">Contact Number is Required</small>
+                </div>
+              </div>
+              <!-- Total Stock -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Total Stock</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="stockCapacity"
+                      [(ngModel)]="storeModel.stockCapacity"
+                      [class.error]="addStorefg.controls['stockCapacity'].dirty && addStorefg.hasError('required','stockCapacity')" />
+                  </div>
+                  <small *ngIf="addStorefg.controls['stockCapacity'].dirty && addStorefg.hasError('required','stockCapacity')"
+                    class="text-danger">Stock Capacity is Required</small>
+                </div>
+              </div>
+
+              <!-- Address -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Address</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="storeAddress"
+                      [(ngModel)]="storeModel.storeAddress"
+                      [class.error]="addStorefg.controls['storeAddress'].dirty && addStorefg.hasError('required','storeAddress')" />
+                  </div>
+                  <small *ngIf="addStorefg.controls['storeAddress'].dirty && addStorefg.hasError('required','storeAddress')"
+                    class="text-danger">Stock Address is Required</small>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="submit" class="btn text-white w-25" style="background-color: rgb(156, 28, 92)">
+              Add
+            </button>
+            <button type="button" class="btn text-white w-25" data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,234 @@
+.body{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    background-image: url("../../../../assets/img/issuancebgi.png");  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.outerContainer{
+    width: 100%;
+    height: 500px;
+    padding: 2px 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.backpress{
+    display: inline-block;
+    margin: 7px;
+}
+
+.backpressbtn{
+    font-size: 35px;
+    color: rgb(156,28,92);
+}
+
+a{
+    text-decoration: none;
+}
+
+.innerContainer{
+    width: 99%;
+    
+}
+
+.petrolInputs{
+    /* max-width: 350px; */
+    width:540px;
+
+}
+
+.InputFields {
+    margin: 20px 5px;
+}
+
+label {
+    font-size: 15px;
+    color: rgb(41, 38, 38);
+    font-weight: 500;
+}
+
+.vehicleNoDiv, .driverNameDiv, .departmentDiv, .demandDiv {
+    /* border: 1px solid rgb(156,28,92); */
+    border-radius: 6px;
+    box-shadow: rgb(149 157 165 / 20%) 0px 2px 18px;
+    background: #fff;
+    border:1px solid rgb(134, 133, 133);
+    width:100%;
+}
+
+#vehicleNo, #driverName, #demand{
+    border: none;
+    outline: none;
+    background: none; 
+    width: 83%;    
+ 
+}
+
+#department{
+    border: none;
+    outline: none;
+    background: none;  
+    width: 100%;   
+}
+
+#vehicleNobtn, #driverNamebtn, #departmentbtn{
+    border: none;
+    background: none;
+    cursor: pointer;
+    height: 30px;  
+    border-radius: 6px; 
+}
+
+#barcodebtn:hover, #regNumberbtn:hover {
+    color: blue;
+}
+
+ .buttonDiv{
+    width: 114%;
+    
+}
+
+.fuelbtn{
+    border: 1px solid rgb(175, 175, 175);
+    background-color: rgb(248, 192, 220);
+    width: 160px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 5px;  
+}
+
+.fuelbtn:hover {
+    background-color: rgb(156,28,92);
+    color: white;
+}
+
+.ReqApprovalbtn{
+    border: 1px solid rgb(196, 190, 190);
+    background-color: rgb(10, 132, 255);
+    color: white;
+    width: 160px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 13px;
+    font-weight: 500;
+
+}
+
+.cancelbtn{
+    border: 1px solid rgb(196, 190, 190);
+    background-color: rgb(255, 69, 58);
+    color: white;
+    width: 160px;
+    height: 45px;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.details{
+    margin-top: 35px;
+  
+}
+
+.borderDiv{
+    border: 1px solid rgb(228, 228, 228);
+    background-color: white;
+    border-radius: 5px;
+    position: relative;
+    max-width: 500px;
+    height: 433px;
+    padding: 30px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin:auto;
+    
+}
+
+.childDiv{
+    position: absolute;
+    top: -14px;
+    border: 1px solid rgb(179, 176, 176);
+    padding: 0 20px;
+    border-radius: 5px;
+    background-color: rgb(156,28,92);
+    color: white;
+}
+
+.VehicleDetails{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+
+.hrline{
+    color: #aea9a9;
+    width: 96%;
+}
+.input{
+    padding:10px;
+    width:100%;
+    border:none;
+    text-transform: uppercase;
+    height:20px;
+}
+.form-check-input{
+    width:20px;
+    height:20px;
+}
+.demandDiv,.dd,.vl{
+    margin-left:11%;
+    width:86%;
+}
+.driverNameDiv,.vehicleNoDiv{
+
+    margin-left:8%;
+    width:86%;
+}
+.backButton{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    color:#fff;
+    background: rgb(156,28,92);
+    line-height: 40px;
+    text-align: center;
+    font-size: 28px;
+}
+.fa-circle-xmark{
+    font-size:30px;
+    font-weight: bold;
+    margin:4px;
+    
+}
+.not-found{
+    /* width: 28px; */
+    font-size: 32px;
+    font-weight: bold;
+   display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:4px;
+}
+.requesteddContainer{
+    background: white;
+    margin-top:50px;
+    box-shadow: rgb(149 157 165 / 20%) 0px 2px 18px;
+}
+.mat-mdc-form-field{
+    display:block;
+    height:55px;
+}
+.radioBtns{
+    margin-left: 20px;
+    width:100%;
+}
+
+
+

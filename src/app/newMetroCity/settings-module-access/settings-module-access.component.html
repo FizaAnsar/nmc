@@ -1,0 +1,123 @@
+<div class="body">
+    <div class="outerContainer">
+        <div class="backpress">
+            <div class="backpressbtn">
+               <a [routerLink]="['/fuel',{
+                outlets:{'metroCity':['settings']}
+              }]">
+                <i class="fa-solid fa-circle-arrow-left"></i>
+               </a> 
+            </div>
+        </div>
+        <div class="fw-bold text-secondary fs-5">
+            Module Access
+        </div>
+        <div class="fw-bold text-secondary fs-5 w-100">
+            <hr />
+          </div>
+
+          <div class="innerContainer">
+             <!-- Select User -->
+             <div class="my-4 d-flex justify-content-start">
+                <div class="modelHeadingDiv text-start mx-2"> User</div>
+                <div class="modalValueDiv text-center mx-2">
+                    <div ngbDropdown class="nav-item dropdown w-100">
+                        <div class="users">
+                        <a
+                          class="nav-link dropdown-toggle d-flex justify-content-end w-100 align-items-center p-2"
+                          href="#"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          aria-expanded="true"
+                          ngbDropdownToggle
+                        >
+                          
+                        </a>
+                        <ul class="dropdown-menu w-100" ngbDropdownMenu>
+                          <li><a class="dropdown-item" href="#" ngbDropdownItem>admin</a></li>
+                          <li><a class="dropdown-item" href="#" ngbDropdownItem>fuelBoy</a></li>
+                        </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="checkbox text-dark fs-5">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="dashboard" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Dashbaord
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="issuance" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Issuance
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="approval" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Approval
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="inventory" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                     Inventory
+                    </label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="inventory-allowAddingProduct" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Allow Adding Product
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="inventory-allowEditProduct" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Allow Edit Product
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="inventory-allowAddingPurchase" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Allow Adding Purchase
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="inventory-allowViewingPurchase" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Allow Viewing Purchase
+                        </label>
+                      </div>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="vehicle" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Vehicle
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="report" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Reports
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="setting" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Settings
+                    </label>
+                  </div>
+                  
+                  
+
+              </div>
+          </div>
+
+          <!-- save button -->
+          <div class="d-flex justify-content-end">
+            <button class="savebtn">Save</button>
+          </div>
+    </div>
+</div>

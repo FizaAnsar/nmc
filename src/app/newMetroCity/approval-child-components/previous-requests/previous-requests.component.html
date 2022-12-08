@@ -1,0 +1,59 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="">
+        <a [routerLink]="['/fuel', { outlets: { metroCity: ['approval'] } }]">
+          <i class="fa-solid fa-circle-arrow-left backpressbtn"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="innerContainer">
+      <!-- Table container for Approval Requests -->
+      <div class="tableContainer">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr class="tableHeadings">
+              <th scope="col">SR.</th>
+              <th scope="col">VEHICLE NUMBER</th>
+              <th scope="col">DRIVER NAME</th>
+              <th scope="col">DEPARTMENT</th>
+              <th scope="col">MONTHLY CONSUMPTION</th>
+              <th scope="col">DEMAND</th>
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr class="accept">
+              <th scope="row">1</th>
+              <td>ABC-100P</td>
+              <td>Hassan</td>
+              <td>Electrical</td>
+              <td>50L</td>
+              <td>50L</td>
+              <td>Approved</td>
+            </tr>
+            <tr class="change">
+              <th scope="row">2</th>
+              <td>ABC-100P</td>
+              <td>Ali</td>
+              <td>Electrical</td>
+              <td>100L</td>
+              <td>60L</td>
+              <td>Approved With Changes</td>
+            </tr>
+            <tr class="denied">
+              <th scope="row">3</th>
+              <td>ABC-100P</td>
+              <td>Arshad Aslam</td>
+              <td>Electrical</td>
+              <td>80L</td>
+              <td>0L</td>
+              <td>Denied</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,297 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="">
+        <a [routerLink]="['/fuel', { outlets: { metroCity: ['approval'] } }]">
+          <i class="fa-solid fa-circle-arrow-left backpressbtn"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="innerContainer">
+      <!-- Table container for Approval Requests -->
+      <div class="tableContainer">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr class="tableHeadings">
+              <th scope="col">SR.</th>
+              <th scope="col">VEHICLE NUMBER</th>
+              <th scope="col">DRIVER NAME</th>
+              <th scope="col">DEPARTMENT</th>
+              <th scope="col">MONTHLY CONSUMPTIONS</th>
+              <th scope="col">DEMAND</th>
+
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          <tbody class="">
+            <tr class="" *ngFor="let r of pendingRequests let i=index">
+              <th scope="row">{{i}}</th>
+              <td>{{r.vehicleNumber}}</td>
+              <td>{{r.driverId}}</td>
+              <td>{{r.departmentId}}</td>
+              <td></td>
+              <td>{{r.demand}}</td>
+
+              <td>
+                <div
+                  class="actions d-flex align-items-center justify-content-center"
+                >
+                  <div class="approveDiv">
+                    <button
+                      class="refuel accept p-1 me-2"
+                     (click)="approve(r,approved.value,i)"
+                     value="approve"
+                     #approved
+                    >
+                      Approve
+                    </button>
+                  </div>
+                  <div class="changeDiv">
+                    <button
+                      class="refuel change p-1 me-2"
+                      data-bs-toggle="modal"
+                      data-bs-target="#changeModal"
+                    >
+                      Change
+                    </button>
+                  </div>
+                  <div class="DenyDiv">
+                    <button
+                      class="refuel denied p-1 me-2"
+                      value="deny"
+                      (click)="approve(r,deny.value,i)"
+                      #deny
+                    >
+                      Denied
+                    </button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+         
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal of approve  -->
+  <!-- <div
+    class="modal fade"
+    id="approveModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            Approve
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="VehicleDetailsBox">
+           
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Vehicle Number</div>
+              <div class="valueDiv w-50 text-center">ABC-1234-P</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Driver Name</div>
+              <div class="valueDiv w-50 text-center">John</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Department</div>
+              <div class="valueDiv w-50 text-center">Electrical</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Fuel Type</div>
+              <div class="valueDiv w-50 text-center">Petrol</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Demand</div>
+              <div class="valueDiv w-50 text-center">50L</div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <!--Model of change  -->
+  <div
+    class="modal fade"
+    id="changeModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            Change
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="VehicleDetailsBox">
+            <!-- current stock -->
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Vehicle Number</div>
+              <div class="valueDiv w-50 text-center">ABC-1234-P</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Driver Name</div>
+              <div class="valueDiv w-50 text-center">John</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Department</div>
+              <div class="valueDiv w-50 text-center">Electrical</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Fuel Type</div>
+              <div class="valueDiv w-50 text-center">Petrol</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Demand</div>
+              <input
+                type="text"
+                class="w-50 text-center valueDiv demandDiv"
+                value="{{ demandValue }}"
+              />
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- model for deny -->
+  <!-- <div
+    class="modal fade"
+    id="denyModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            Denied
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="VehicleDetailsBox">
+          
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Vehicle Number</div>
+              <div class="valueDiv w-50 text-center">ABC-1234-P</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Driver Name</div>
+              <div class="valueDiv w-50 text-center">John</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Department</div>
+              <div class="valueDiv w-50 text-center">Electrical</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Fuel Type</div>
+              <div class="valueDiv w-50 text-center">Petrol</div>
+            </div>
+            <div class="my-4 d-flex">
+              <div class="headingDiv w-50 text-center">Demand</div>
+              <div class="valueDiv w-50 text-center">50L</div>
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+</div>

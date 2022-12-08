@@ -1,0 +1,73 @@
+.body{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+    background-image: url("../../../assets/img/issuancebgi.png");  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+a{
+    text-decoration: none;
+}
+
+/* .card{
+   
+} */
+
+.pendingRequest{
+    width:200px;
+    height:180px;
+    cursor: pointer;
+    padding:5px;
+    background: #ff6682;
+}
+
+.previousStatus{
+    width:200px;
+    height:180px;
+    cursor: pointer;
+    padding:5px;
+    background: #8189eb;
+}
+
+.pendingRequest:hover, .previousStatus:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.iconText{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top:8px;
+}
+
+.card img{
+    width:60px;
+}
+
+.card .text{
+    font-size: 21px;
+    color:#fff;
+    font-weight: 700;
+    line-height: 25px;
+
+}
+.doublearrow{
+    display:flex;
+    justify-content: end;
+    padding-top:50px;
+    padding-right:5px;
+    font-size: 20px;
+    color:#fff;
+}
+
+.fa-file-circle-exclamation,.fa-arrow-up-right-from-square{
+    color:#fff;
+    font-size: 45px;
+    padding-bottom:15px;
+}

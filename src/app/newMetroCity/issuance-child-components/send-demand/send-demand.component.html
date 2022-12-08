@@ -1,0 +1,149 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="">
+        <a [routerLink]="['/fuel', { outlets: { metroCity: ['issuance'] } }]">
+          <i class="fa-solid fa-circle-arrow-left backpressbtn"></i>
+        </a>
+      </div>
+    </div>
+    
+      <div class="innerContainer">
+        <div class="row">
+          <!-- Petrol Request information Inputs -->
+          
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 requesteddContainer">
+            <h3 class="p-2 text-center">Send Approval Request to Admin</h3>
+            <div class="d-flex align-items-center justify-content-center">
+              <div class="petrolInputs">
+                <!-- Vehicle Number -->
+                <form [formGroup]="formGroup">  
+                <div class="InputFields">
+                  <label for="vehicleNo" class="vl">Vehicle #</label>
+                  <div class="radioBtns d-flex align-items-center">
+                    <div class="vehicleNoDiv text-center">
+                               
+                      <mat-form-field >
+                        <input matInput type="text" [matAutocomplete]="auto" formControlName="vehicleNumber" (keyup)="handleKeyUpforMenuCode($event)"/>
+                          <mat-autocomplete #auto="matAutocomplete">
+                              <mat-option  *ngFor="let vNumb of filteredOptions" [value]="vNumb" #matDropdown
+                              (onSelectionChange)="handlekeyuponDropdown(matDropdown.value)"
+                              required
+                              >
+                                 {{vNumb}}
+                              </mat-option>
+        
+                          </mat-autocomplete>
+        
+                      </mat-form-field>
+                   
+                    </div>
+                  </div>
+                </div>
+                <!-- Demand -->
+                <div class="InputFields">
+                  <label for="demand" class="dd">Demand</label>
+                  <div class="demandDiv text-center">
+                    <mat-form-field class="demand">
+                    <input
+                      type="Number"
+                      matInput
+                      id="2"
+                      class="input"
+                      style="height: 20px; text-transform: uppercase;"
+                      required
+                      #demand
+                    />
+                  </mat-form-field>
+                  </div>
+                </div>
+                <!-- {{demand.value}} -->      
+                <!-- Request and Cancel Button -->
+                <div class="buttonDiv row text-center">
+                  <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <button
+                      class="ReqApprovalbtn"
+                      (click)="sndRequest(demand.value,request.value)"
+                      value="pending"
+                      #request
+                    >
+                    <!-- data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" -->
+                      Request Approval
+                    </button>
+                  </div>
+                  <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                    <button class="cancelbtn">Cancel</button>
+                  </div>
+                </div>
+                </form>
+              </div>
+
+            </div>
+          
+            
+          </div>
+        
+  
+          <!-- details of the vehicle -->
+          <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="details" >
+              <div class="borderDiv">
+                <div class="childDiv">Details</div>
+  
+                <div class="VehicleDetailsBox" *ngFor="let det of selectedVehicleDetail">
+                  
+                  <div class="VehicleDetails">Vehicle Number:<b class="ps-3">{{det.vehicleNumber}}</b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Department:<b class="ps-3">{{det.departmentId}}</b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Driver:<b class="ps-3">{{det.driverId}}</b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Fuel Type:<b class="ps-3"></b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Monthly Allowed Fuel:<b class="ps-3">{{det.allowedFuel}}</b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Demand Fuel:<b class="ps-3">{{demandfuel}}</b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Current Month Consumption:<b class="ps-3"></b></div>
+                  <hr class="hrline" />
+                  <div class="VehicleDetails">Remaining:<b class="ps-3">{{remaining}}</b></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <!-- modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Vehicle Number... ABCP</p>
+          <div class="mb d-flex align-items-center justify-content-center">
+            <i class="fa-regular fa-circle-xmark text-danger"></i>
+            <p class="not-found">Record Not Found</p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            OK
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

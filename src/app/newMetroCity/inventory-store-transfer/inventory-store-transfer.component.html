@@ -1,0 +1,90 @@
+<div class="body">
+    <div class="outerContainer d-flex">
+      <div class="backpress">
+        <div class="backpressbtn">
+          <a [routerLink]="[
+              '/fuel', { outlets: { metroCity: ['inventory'] }
+              }]">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div class="innerContainer">
+          <div class="fw-bold fs-4 headingColor">STORES TRANSFER</div>
+        <div class="fw-bold text-secondary fs-5 w-100">
+          <hr />
+        </div>
+        <div class="row">
+            <!-- date from  -->
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+              <label for="fromDate">From</label>
+              <div class="InputFields">
+                <input type="date" placeholder="" id="fromDate" />
+              </div>
+            </div>
+            <!-- date to -->
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+              <label for="toDate">To</label>
+              <div class="InputFields">
+                <input type="date" placeholder="" id="toDate" />
+              </div>
+            </div> 
+
+            <!-- Storage -->
+            <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+              <label for="dropdown">Storage</label>
+              <div
+                ngbDropdown
+                class="nav-item dropdown dropdownBorder"
+                style="height: 45px"
+              >
+                <a
+                  class="nav-link dropdown-toggle d-flex justify-content-end w-100 align-items-center p-2"
+                  href="#"
+                  style="height: 48px"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="true"
+                  ngbDropdownToggle
+                >
+                </a>
+                <ul class="dropdown-menu w-100" ngbDropdownMenu>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>room 1</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>room 2</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- show btn -->
+        <div class="my-4 col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
+          <button class="showbtn">Show</button>
+        </div>
+      </div>
+
+        <div class="StoreContainer">
+          <table class="table table-striped text-center">
+            <thead>
+              <tr class="TableheadingDiv">
+                <th scope="col">#</th>
+                <th scope="col">FUEL TYPE</th>
+                <th scope="col">QUANTITY</th>
+                <th scope="col">PRICE</th>
+                <th scope="col">STATUS</th>
+                <th scope="col">RECIEVED DATE</th>
+                <th scope="col">SUPPLIER NAME</th>
+                <th scope="col">INVOICE</th>
+              </tr>
+            </thead>
+            <tbody>
+ 
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

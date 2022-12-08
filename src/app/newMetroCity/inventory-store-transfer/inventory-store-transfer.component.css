@@ -1,0 +1,95 @@
+.body{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.outerContainer{
+    width: 100%;
+    height: 500px;
+    padding: 2px 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.backpressbtn{
+    font-size: 35px;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(156,28,92);
+}
+
+.innerContainer{
+    padding-left: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.headingColor{
+    color: rgb(156,28,92);
+}
+
+.dropdownBorder, .InputFields{
+    height: 45px;
+    width: 91%;
+    border: 1px solid #bab9b9;
+    border-radius: 5px;
+}
+
+#fromDate ,#toDate {
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.showbtn{
+    background-color: rgb(156,28,92);
+    color: white;
+    width: 150px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.StoreContainer{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.TableheadingDiv{
+    background-color: rgb(206, 206, 206);
+    border: 1px solid black;
+    color: black;
+    font-weight: 500;
+}
+
+.editbtn{
+    width: 70px;
+    height: 30px;
+    background-color: rgb(255, 230 ,32);
+    color: rgb(65, 65, 65);
+    border-radius: 5px;
+    border: 1px solid rgb(126, 125, 125);
+}
+
+.editbtn:hover {
+    background-color: rgb(238, 214, 34);
+}
+
+.deletebtn{
+    width: 70px;
+    height: 30px;
+    background-color: rgb(255, 69 ,58);
+    color: rgb(65, 65, 65);
+    border-radius: 5px;
+    border: 1px solid rgb(126, 125, 125);
+}
+
+.deletebtn:hover {
+    background-color: rgb(216, 61, 53);
+}

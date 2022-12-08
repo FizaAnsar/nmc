@@ -1,0 +1,46 @@
+<div class="body">
+    <!-- <div class="backButton ">
+        <i class="fa-solid fa-arrow-left"></i>
+    </div> -->
+   <div class="container h-100">
+       <div class="demands d-flex justify-content-center h-100 align-items-center">
+           <a  [routerLink]="['/fuel',{
+               outlets:{'metroCity':['send-demand']}
+             }]">
+               <div class="sendDemand card me-5 "> 
+                   <div class="iconText">
+                    <i class="fa-solid fa-share-from-square"></i>
+                       <div class="text">
+                           Send Demand
+                       </div>
+                   </div>
+                   <div class="doublearrow">
+           
+                       <i class="fa-solid fa-angles-right"></i>
+                   </div>
+                   
+           
+               </div>
+           </a>
+       
+           <a  [routerLink]="['/fuel',{
+            outlets:{'metroCity':['demand-details']}
+          }]"> 
+           <div class="demandStatus card me-5"> 
+               <div class="iconText">
+                <i class="fa-solid fa-people-group"></i>
+                   <div class="text">
+                       Demand Status
+                   </div>
+               </div>
+               <div class="doublearrow">
+       
+                   <i class="fa-solid fa-angles-right"></i>
+               </div>
+               
+       
+           </div>
+           </a>
+       </div>
+   </div>
+</div>

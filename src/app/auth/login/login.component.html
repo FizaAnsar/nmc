@@ -1,0 +1,72 @@
+<div class="body">
+    <div class="mainContainer">
+      <div class="imageDiv text-center">
+        <img
+          src="assets/img/logo_NMC.png"
+          alt="New Metro City"
+          class="NMCimage"
+        />
+      </div>
+      <div class="WelcomeDiv text-center">
+        <p class="fw-bold">Welcome</p>
+      </div>
+      <div class="loginContainer">
+        <form [formGroup]="LoginForm" (ngSubmit)="onSubmit(login.value)" #login="ngForm">
+          <!-- username -->
+          <div class="form-group">
+            <label for="username" class="text-secondary">Username</label>
+            <input
+              type="text"
+              formControlName="username"
+              [ngClass]="{
+                'is-invalid': submitted && LoginForm.controls['username'].errors
+              }"
+              class="form-control inputFields"
+              id="username"
+            />
+            <div *ngIf="submitted && LoginForm.controls['username'].errors" class="text-danger">
+              <div *ngIf="LoginForm.controls['username'].errors['required']">
+                <small>Username is required</small>
+              </div>
+              <div *ngIf="LoginForm.controls['username'].errors['minlength']">
+                <small>Username must be 5 characters long</small>
+              </div>
+              <div *ngIf="LoginForm.controls['username'].errors['maxlength']">
+                <small>fiza</small>
+              </div>
+            </div>
+          </div>
+  
+          <!-- password -->
+          <div class="form-group">
+            <label for="password" class="text-secondary">Password</label>
+            <input
+              type="password"
+              formControlName="password"
+              [ngClass]="{
+                'is-invalid': submitted && LoginForm.controls['password'].errors
+              }"
+              class="form-control inputFields"
+              id="password"
+            />
+            <div *ngIf="submitted && LoginForm.controls['password'].errors" class="text-danger">
+              <div *ngIf="LoginForm.controls['password'].errors['required']">
+                <small>Password is required</small>
+              </div>
+              <div *ngIf="LoginForm.controls['password'].errors['minlength']">
+                <small>Password must be 5 characters long</small>
+              </div>
+              <div *ngIf="LoginForm.controls['password'].errors['maxlength']">
+                <small>ranya</small>
+              </div>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <button type="submit" class="submitbtn" routerLink="/main" >Login Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

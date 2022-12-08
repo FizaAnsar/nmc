@@ -1,0 +1,44 @@
+<div class="body">
+ 
+ <div class="container h-100">
+     <div class="demands d-flex justify-content-center h-100 align-items-center">
+         <a  [routerLink]="['/fuel',{
+             outlets:{'metroCity':['pending-requests']}
+           }]">
+             <div class="pendingRequest card me-5 "> 
+                 <div class="iconText">
+                  <i class="fa-solid fa-file-circle-exclamation"></i>
+                     <div class="text text-center">
+                        Pending Requests
+                     </div>
+                 </div>
+                 <div class="doublearrow">
+         
+                     <i class="fa-solid fa-angles-right"></i>
+                 </div>
+                 
+         
+             </div>
+         </a>
+     
+         <a  [routerLink]="['/fuel',{
+          outlets:{'metroCity':['previous-requests']}
+        }]"> 
+         <div class="previousStatus card me-5 "> 
+             <div class="iconText">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                 <div class="text text-center">
+                     Previous Requests
+                 </div>
+             </div>
+             <div class="doublearrow">
+     
+                 <i class="fa-solid fa-angles-right"></i>
+             </div>
+             
+     
+         </div>
+         </a>
+     </div>
+ </div>
+</div>

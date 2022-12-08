@@ -1,0 +1,86 @@
+<div class="body">
+  <div class="outerContainer">
+    <div class="innerContainer">
+      <!-- Upper Div -->
+      <div class="my-1 d-flex justify-content-center align-items-center flex-wrap">
+         
+          <!-- New Purchase -->
+        <a [routerLink]="[
+            '/fuel', {outlets: { metroCity: ['inventory-new-purchase'] }
+          }]" [routerLinkActive]="'active'">
+          <div class="newPurchase card me-5 mb-5 mt-1">
+            <div class="iconText">
+              <i class="fa-solid fa-cart-arrow-down iconSize"></i>
+              <div class="text">New Purchase</div>
+            </div>
+            <div class="doublearrow">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </a>
+        <!-- History -->
+        <a [routerLink]="[
+            '/fuel', { outlets: { metroCity: ['inventory-history'] }
+            }]">
+          <div class="history card me-5 mb-5 mt-1">
+            <div class="iconText">
+              <i class="fa-solid fa-clock-rotate-left iconSize"></i>
+              <div class="text">History</div>
+            </div>
+            <div class="doublearrow">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </a>
+  
+        <!-- Store Transfer -->
+        <a [routerLink]="[
+            '/fuel', { outlets: { metroCity: ['inventory-store-transfer'] }
+            }]">
+          <div class="storeTransfer card me-5 mb-5 mt-1">
+            <div class="iconText">
+              <i class="fa-solid fa-share-from-square iconSize"></i>
+              <div class="text">Store Transfer</div>
+            </div>
+            <div class="doublearrow">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+  
+      <!-- Lower Div -->
+      <div class="my-1 d-flex justify-content-center align-items-center flex-wrap">
+          <!-- Stores -->
+        <a [routerLink]="[
+            '/fuel', { outlets: { metroCity: ['inventory-stores'] }
+            }]">
+          <div class="stores card me-5 mb-5">
+            <div class="iconText">
+              <i class="fa-solid fa-store iconSize"></i>
+              <div class="text">Stores</div>
+            </div>
+            <div class="doublearrow">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </a>
+  
+        <!-- Supplier -->
+        <a [routerLink]="[
+            '/fuel', { outlets: { metroCity: ['inventory-suppliers'] }
+            }]">
+          <div class="supplier card me-5 mb-5">
+            <div class="iconText">
+              <i class="fa-solid fa-people-group iconSize"></i>
+              <div class="text">Suppliers</div>
+            </div>
+            <div class="doublearrow">
+              <i class="fa-solid fa-angles-right"></i>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

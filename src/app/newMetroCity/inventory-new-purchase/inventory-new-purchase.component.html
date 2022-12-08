@@ -1,0 +1,394 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="">
+        <a [routerLink]="['/fuel', { outlets: { metroCity: ['inventory'] } }]">
+          <i class="fa-solid fa-circle-arrow-left backpressbtn"></i>
+        </a>
+      </div>
+    </div>
+    <div class="innerContainer row">
+      <!-- new purchase box -->
+      <div class="col-xxl-5 col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12">
+        <div class="newPurchaseBox mx-2">
+          <div class="fw-bold fs-5 headingColor">NEW PURCHASE</div>
+          <div class="fw-bold text-secondary fs-5 w-100">
+            <hr />
+          </div>
+
+          <div class="newPurchaseContainer">
+            <form #purchaseAdd="ngForm" (ngSubmit)="onSubmitPurchase()" [formGroup]="addPurchase">
+            <!-- Fuel Type -->
+            <div class="my-2">
+              <label for="dropdown">Fuel Type</label>
+              <div ngbDropdown class="nav-item dropdown dropdownBorder" style="height: 45px">
+                <a class="nav-link dropdown-toggle d-flex justify-content-end w-100 align-items-center p-2" href="#"
+                  style="height: 48px" role="button" data-bs-toggle="dropdown" aria-expanded="true" ngbDropdownToggle>
+                </a>
+                <ul class="dropdown-menu w-100" ngbDropdownMenu>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>Admin</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>Fuel</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Quantity -->
+            <div class="my-2">
+              <label for="quantity">Quantity</label>
+              <div class="InputFields">
+                <input type="text" placeholder="" id="quantity" />
+              </div>
+            </div>
+
+            <!-- Total Price -->
+            <div class="my-2">
+              <label for="totalPrice">Total Price</label>
+              <div class="InputFields">
+                <input type="number" placeholder="" id="totalPrice" />
+              </div>
+            </div>
+
+            <!-- Storage -->
+            <div class="my-2">
+              <label for="dropdown">Storage</label>
+              <div ngbDropdown class="nav-item dropdown dropdownBorder" style="height: 45px">
+                <a class="nav-link dropdown-toggle d-flex justify-content-end w-100 align-items-center p-2" href="#"
+                  style="height: 48px" role="button" data-bs-toggle="dropdown" aria-expanded="true" ngbDropdownToggle>
+                </a>
+                <ul class="dropdown-menu w-100" ngbDropdownMenu>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>room 1</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>room 2</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- recieving Date -->
+            <div class="my-2">
+              <label for="recievingdate">Recieving Date</label>
+              <div class="InputFields">
+                <input type="date" placeholder="" id="recievingdate" />
+              </div>
+            </div>
+
+            <!-- Invoice # -->
+            <div class="my-2">
+              <label for="invoiceNo">Invoice #</label>
+              <div class="InputFields">
+                <input type="number" placeholder="" id="invoiceNo" />
+              </div>
+            </div>
+
+             <!-- Supplier -->
+             <div class="my-2">
+              <label for="supplier">Supplier</label>
+              <div class="InputFields">
+                <input type="text" placeholder="" id="supplier" />
+              </div>
+            </div>
+
+            <!-- payment -->
+            <div class="my-2">
+              <label for="supplier">Payment</label>
+              <div ngbDropdown class="nav-item dropdown dropdownBorder" style="height: 45px">
+                <a class="nav-link dropdown-toggle d-flex justify-content-end w-100 align-items-center p-2" href="#"
+                  style="height: 48px" role="button" data-bs-toggle="dropdown" aria-expanded="true"
+                  ngbDropdownToggle>
+                </a>
+                <ul class="dropdown-menu w-100" ngbDropdownMenu>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>Cash</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" ngbDropdownItem>Credit</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Paid -->
+            <div class="my-2">
+              <label for="paid">Paid</label>
+              <div class="InputFields">
+                <input type="text" placeholder="" id="paid" />
+              </div>
+            </div>
+
+            <!-- Save button -->
+            <div class="my-3 d-flex justify-content-end">
+              <button type="submit" class="savebtn">Save</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- added purchase box -->
+      <div class="col-xxl-7 col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12">
+        <div class="addedPurchaseBox mx-2">
+          <div class="fw-bold fs-5 headingColor">ADDED PURCHASE</div>
+          <div class="fw-bold text-secondary fs-5 w-100">
+            <hr />
+          </div>
+
+          <div class="addedPurchaseContainer">
+            <table class="table table-striped text-center">
+              <thead>
+                <tr class="TableheadingDiv">
+                  <th scope="col">FUEL TYPE</th>
+                  <th scope="col">QUANTITY</th>
+                  <th scope="col">TOTAL PRICE</th>
+                  <th scope="col">STORES</th>
+                  <th scope="col">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let p of allPurchase; let j = index">
+                  <th>{{p.fuelType}}</th>
+                  <td>{{p.fuelQuantity}} L</td>
+                  <td>{{p.totalPrice | currency: 'PKR'}}</td>
+                  <td>{{p.storage}}</td>
+                  <td>
+                    <div ngbDropdown class="d-inline-block">
+                      <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                      </button>
+                      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button data-bs-toggle="modal" data-bs-target="editModal" ngbDropdownItem (click)="editItem(p, j)">Edit</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- purchase details box -->
+      <!-- <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="purchaseDetailsBox mx-2">
+          <div class="fw-bold fs-5 headingColor">PURCHASE DETAILS</div>
+          <div class="fw-bold text-secondary fs-5 w-100">
+            <hr />
+          </div>
+
+          <div class="purchaseDetailsContainer">
+            <div class="row">
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+               
+                <div class="my-2">
+                  <label for="invoiceNo">Invoice #</label>
+                  <div class="InputFields">
+                    <input type="number" placeholder="" id="invoiceNo" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                
+                <div class="my-2">
+                  <label for="supplier">Supplier</label>
+                  <div class="InputFields">
+                    <input type="text" placeholder="" id="supplier" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                
+                <div class="my-2">
+                  <label for="supplier">Payment</label>
+                  <div ngbDropdown class="nav-item dropdown dropdownBorder" style="height: 45px">
+                    <a class="nav-link dropdown-toggle d-flex justify-content-end w-100 align-items-center p-2" href="#"
+                      style="height: 48px" role="button" data-bs-toggle="dropdown" aria-expanded="true"
+                      ngbDropdownToggle>
+                    </a>
+                    <ul class="dropdown-menu w-100" ngbDropdownMenu>
+                      <li>
+                        <a class="dropdown-item" ngbDropdownItem>Cash</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" ngbDropdownItem>Credit</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+             
+                <div class="my-2">
+                  <label for="paid">Paid</label>
+                  <div class="InputFields">
+                    <input type="text" placeholder="" id="paid" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="my-3 d-flex justify-content-end">
+              <button class="savebtn">Save</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div
+    class="modal fade"
+    id="editModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title fw-bold"
+            id="exampleModalLabel"
+            style="color: rgb(156, 28, 92)"
+          >
+            ADD USERS
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <form
+          #UserAdd="ngForm"
+          (ngSubmit)="onSubmitPurchase()"
+          [formGroup]="addPurchase"
+        >
+          <div class="modal-body">
+            <div class="addUserContainer">
+              <!-- Fuel Type -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Fuel Type</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input
+                      type="text"
+                      class="w-100 inputs"
+                      formControlName="userRole"
+                      [(ngModel)]="purchaseModel.fuelType"
+                      [class.error]="
+                      addPurchase.controls['fuelType'].dirty &&
+                      addPurchase.hasError('required', 'fuelType')
+                      "
+                    />
+                  </div>
+                  <small
+                    *ngIf="
+                    addPurchase.controls['fuelType'].dirty &&
+                    addPurchase.hasError('required', 'fuelType')
+                    "
+                    class="text-danger"
+                    >Fuel Type is Required</small
+                  >
+                </div>
+              </div>
+              <!-- Fuel Quantity -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Quantity</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" formControlName="fuelQuantity"
+                    [(ngModel)]="purchaseModel.fuelQuantity"
+                    [class.error]="
+                    addPurchase.controls['fuelQuantity'].dirty &&
+                    addPurchase.hasError('required', 'fuelQuantity')
+                    "/>
+                  </div>
+                  <small
+                  *ngIf="
+                  addPurchase.controls['fuelQuantity'].dirty &&
+                  addPurchase.hasError('required', 'fuelQuantity')
+                  "
+                  class="text-danger"
+                  >Quantity is Required</small
+                >
+                </div>
+              </div>
+              <!-- Total Price -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Total Price</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" 
+                    formControlName="totalPrice"
+                        [(ngModel)]="purchaseModel.totalPrice"
+                        [class.error]="
+                        addPurchase.controls['totalPrice'].dirty &&
+                        addPurchase.hasError('required', 'totalPrice')
+                        "/>
+                  </div>
+                  <small
+                    *ngIf="
+                    addPurchase.controls['totalPrice'].dirty &&
+                    addPurchase.hasError('required', 'totalPrice')
+                    "
+                    class="text-danger"
+                    >Total Price is Required</small
+                  >
+                </div>
+              </div>
+              <!-- Store -->
+              <div class="my-4 d-flex justify-content-center">
+                <div class="modelHeadingDiv text-start mx-2">Store</div>
+                <div class="withValidation">
+                  <div class="modalValueDiv text-center mx-2">
+                    <input type="text" class="w-100 inputs" 
+                    formControlName="storage"
+                        [(ngModel)]="purchaseModel.storage"
+                        [class.error]="
+                        addPurchase.controls['storage'].dirty &&
+                        addPurchase.hasError('required', 'storage')
+                        "/>
+                  </div>
+                  <small
+                  *ngIf="
+                  addPurchase.controls['storage'].dirty &&
+                  addPurchase.hasError('required', 'storage')
+                  "
+                  class="text-danger"
+                  >Storage is Required</small
+                >
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="modal-footer d-flex justify-content-center">
+            <button
+              type="submit"
+              class="btn text-white w-25"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Add
+            </button>
+            <button
+              type="button"
+              class="btn text-white w-25"
+              data-bs-dismiss="modal"
+              style="background-color: rgb(156, 28, 92)"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

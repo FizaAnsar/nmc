@@ -1,0 +1,45 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="backpressbtn">
+        <a [routerLink]="[
+            '/fuel', { outlets: { metroCity: ['settings'] }
+            }]">
+          <i class="fa-solid fa-circle-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="innerContainer">
+      <div class="fw-bold fs-4 headingColor">PRINTERS</div>
+        <div class="fw-bold text-secondary fs-5 w-100">
+          <hr />
+        </div>
+
+      <!-- print card -->
+        <div class="printCardContainer">
+          <div>
+            <label for="print" class="fw-bold">Print</label>
+            <hr>
+            <div class="printingCheckBox row">
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="admin">
+                  <label class="form-check-label" for="inlineCheckbox1">Admin</label>
+                </div>
+              </div>
+              <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="fuelboy">
+                  <label class="form-check-label" for="inlineCheckbox2">Fuel Boy</label>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+      
+    </div>
+  </div>
+</div>

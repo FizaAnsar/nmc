@@ -1,0 +1,106 @@
+.body{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.outerContainer{
+    width: 100%;
+    height: 500px;
+    padding: 2px 5px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.innerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+}
+
+.card{
+    width:200px;
+    height:180px;
+    cursor: pointer;
+    padding:5px;
+}
+
+.newPurchase{ 
+    background: rgb(4, 222, 113);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.history{
+    background: #FFB5C3;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.storeTransfer{
+    background: rgb(102, 212, 207);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.stores{
+    background: rgb(255, 204, 0);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.supplier{
+    background: #8189eb;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.newPurchase:hover, .history:hover, .storeTransfer:hover, .stores:hover, .supplier:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.iconText{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding-top:15px;
+}
+
+.card img{
+    width:60px;
+
+}
+
+.card .text{
+    font-size: 21px;
+    color:#fff;
+    font-weight: 700;
+    padding-bottom:13px;
+
+}
+
+.doublearrow{
+    display:flex;
+    justify-content: flex-end;
+    padding-top:30px;
+    padding-right:5px;
+    font-size: 20px;
+    color:#fff;
+}
+
+
+.iconSize{
+    color:#fff;
+    font-size: 40px;
+    padding-bottom:15px;
+}
+
+
+.active {
+    background-color: rgb(97, 6, 51);
+    padding: 5px 0;  
+    max-width: 120px;
+}

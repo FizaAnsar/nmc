@@ -1,0 +1,167 @@
+<div class="body">
+  <div class="outerContainer d-flex">
+    <div class="backpress">
+      <div class="backpressbtn">
+        <a
+          [routerLink]="[
+            '/fuel',
+            {
+              outlets: { metroCity: ['inventory'] }
+            }
+          ]"
+        >
+          <i class="fa-solid fa-circle-arrow-left"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="innerContainer">
+      <div class="d-flex justify-content-between">
+        <div class="fw-bold fs-4 headingColor">SUPPLIER</div>
+        <div>
+          <button class="addSupplierbtn" data-bs-toggle="modal"
+          data-bs-target="#SupplierModal">Add Supplier</button>
+        </div>
+      </div>
+      <div class="fw-bold text-secondary fs-5 w-100">
+        <hr />
+      </div>
+
+      <div class="SupplierContainer">
+        <table class="table table-striped text-center">
+          <thead>
+            <tr class="TableheadingDiv"> 
+              <th scope="col">SUPPLIER NAME</th>
+              <th scope="col">SUPPLIER ADDRESS</th>
+              <th scope="col">SUPPLIER CONTACT#</th>
+              <th scope="col">ACTION</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let supplier of AllSuppliers; let j=index">
+              
+              <td>{{supplier.suplierName}}</td>
+              <td>{{supplier.suplierAddress}}</td>
+              <td>{{supplier.suplierContact}}</td>
+              <td>
+                <!-- <div>
+                  <button class="editbtn mx-2" data-bs-toggle="modal"
+                  data-bs-target="#editSupplierModal">Edit</button>
+                  <button class="deletebtn mx-2">Delete</button>
+                </div> -->
+                <div ngbDropdown class="d-inline-block">
+                  <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button data-bs-toggle="modal" data-bs-target="#SupplierModal"ngbDropdownItem (click)="editItem(supplier, j)">Edit</button>
+                    <button data-bs-toggle="modal" data-bs-target="" ngbDropdownItem (click)="removeItem(supplier.id)">Delete</button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+ <!-- Supplier Module -->
+ <div
+ class="modal fade"
+ id="SupplierModal"
+ tabindex="-1"
+ aria-labelledby="exampleModalLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog modal-dialog-centered">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5
+         class="modal-title fw-bold"
+         id="exampleModalLabel"
+         style="color: rgb(156, 28, 92)"
+       >
+        ADD SUPPLIER
+       </h5>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+     </div>
+     <form #SupplierAdd="ngForm" (ngSubmit)="onSubmitSupplier()" [formGroup]="addSupplier">
+     <div class="modal-body">
+       <div class="addSupplierContainer">
+         <!-- Supplier Name -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">Supplier Name</div>
+          <div class="withvalidation">
+            <div class="modalValueDiv text-center mx-2">
+              <input type="text" class="w-100 inputs" 
+              [(ngModel)]="supplierModel.suplierName" formControlName="suplierName"
+              [class.error]="addSupplier.controls['suplierName'].dirty && addSupplier.hasError('required','suplierName')" />
+            </div>
+            <small
+                    *ngIf="addSupplier.controls['suplierName'].dirty && addSupplier.hasError('required','suplierName')"
+                    class="text-danger">Supplier Name is Required</small>
+          </div>
+         </div>
+         <!-- Supplier Address -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">Supplier Address</div>
+           <div class="withvalidation">
+             <div class="modalValueDiv text-center mx-2">
+               <input type="text" class="w-100 inputs" 
+               [(ngModel)]="supplierModel.suplierAddress" formControlName="suplierAddress"
+              [class.error]="addSupplier.controls['suplierAddress'].dirty && addSupplier.hasError('required','suplierAddress')" />
+             </div>
+             <small
+                    *ngIf="addSupplier.controls['suplierAddress'].dirty && addSupplier.hasError('required','suplierAddress')"
+                    class="text-danger">Supplier Address is Required</small>
+           </div>
+         </div>
+         <!-- Supplier Contact -->
+         <div class="my-4 d-flex justify-content-center">
+           <div class="modelHeadingDiv text-start mx-2">Supplier Contact</div>
+           <div class="withvalidation">
+           <div class="modalValueDiv text-center mx-2">
+             <input type="number" class="w-100 inputs" 
+             [(ngModel)]="supplierModel.suplierContact" formControlName="suplierContact"
+              [class.error]="addSupplier.controls['suplierContact'].dirty && addSupplier.hasError('required','suplierContact')" />
+           </div>
+           <small
+                    *ngIf="addSupplier.controls['suplierContact'].dirty && addSupplier.hasError('required','suplierContact')"
+                    class="text-danger">Supplier Contact is Required</small>
+           </div>
+         </div>
+
+       </div>
+     </div>
+     <div class="modal-footer d-flex justify-content-center">
+       <button
+         type="submit"
+         class="btn text-white w-25"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Add
+       </button>
+       <button
+         type="button"
+         class="btn text-white w-25"
+         data-bs-dismiss="modal"
+         style="background-color: rgb(156, 28, 92)"
+       >
+         Cancel
+       </button>
+     </div>
+     </form>
+   </div>
+ </div>
+</div>
+
+
+
+</div>
+
